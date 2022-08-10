@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as C from './App.styles';
 import RestartImg from './images/restart.svg';
 import LogoImg from './images/logo.png';
+import WinImg from './images/win.png';
 import { InfoItem } from './components/InfoItem';
 import { Button } from './components/Button';
 import { GridItem } from './components/GridItem';
@@ -139,6 +140,11 @@ const App = () => {
       {endGame &&
         <C.EndGame>
           <InfoItem content="Parabéns" value="Você venceu!!!" />
+          <C.EndGameInfo>
+            <InfoItem content="Tempo" value={FormatTimeGame(time)} />
+              <InfoItem content="Movimentos" value={`${move}`} />
+          </C.EndGameInfo>
+          <C.EndGameImg src={WinImg} />
           <Button content="Reiniciar" icon={RestartImg} onClick={resetAndCreateGrid} />
         </C.EndGame>
       }      

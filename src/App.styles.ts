@@ -71,5 +71,22 @@ export const GridContainer = styled.div`
 `;
 
 export const EndGame = styled.div`
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+`;
+
+export const EndGameImg = styled.img`
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+`;
+
+export const EndGameInfo = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
 `;
