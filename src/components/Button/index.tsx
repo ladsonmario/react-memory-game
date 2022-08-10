@@ -9,9 +9,11 @@ type Props = {
 export const Button = ({ icon, content, onClick }: Props) => {
     return (
         <C.Button onClick={onClick}>
-            <C.ButtonIcon>
-                <C.ButtonImg src={icon} alt="" />
-            </C.ButtonIcon>
+            {icon &&
+                <C.ButtonIcon>
+                    <C.ButtonImg src={icon} alt="" />
+                </C.ButtonIcon>
+            }            
             <C.ButtonContent>{content}</C.ButtonContent>
         </C.Button>
     );

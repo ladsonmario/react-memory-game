@@ -11,10 +11,10 @@ export const GridItem = ({ item, onClick }: Props) => {
     return (
         <C.GridItem shown={item.shown || item.permanentShown} onClick={onClick}>
             {(item.shown || item.permanentShown) && item.item !== null &&
-                <C.GridIcon src={cards[item.item as number].icon} alt="" />    
+                <C.GridIcon src={cards[item.item].icon} alt="" />    
             }     
             {!item.shown && !item.permanentShown &&         
-                <C.GridIcon src={cardBackImg} alt="" />    
+                <C.GridIcon src={cardBackImg} alt="" opacity={.9} />    
             }       
         </C.GridItem>
     );

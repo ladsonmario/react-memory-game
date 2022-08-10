@@ -6,12 +6,21 @@ export const Container = styled.div`
     margin: auto;
     display: flex;
     margin-top: 40px;
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+    }
 `;
 
 export const Left = styled.div`
-    width: 250px;
+    width: 100%;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;            
+
+    @media (max-width: 750px) {
+        align-items: center;
+        margin-bottom: 40px;
+    }
 `;
 
 export const Logo = styled.div`    
@@ -31,16 +40,36 @@ export const LogoImg = styled.img`
 export const GameInfo = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    @media (max-width: 750px) {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
 `;
 
 export const Right = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
+
+    @media (max-width: 750px) {        
+        justify-content: center;               
+    }
 `;
 export const GridContainer = styled.div`
-    max-width: 450px;    
+    width: 450px;    
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
+    @media (max-width: 750px) {
+        width: auto;        
+        grid-template-columns: repeat(3, 1fr);
+    }
+`;
+
+export const EndGame = styled.div`
+    margin: auto;
 `;
