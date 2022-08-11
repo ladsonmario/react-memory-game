@@ -3,6 +3,8 @@ import * as C from './App.styles';
 import RestartImg from './images/restart.svg';
 import LogoImg from './images/logo.png';
 import WinImg from './images/win.png';
+import PlayImg from './images/play.png';
+import HomeImg from './images/home.png';
 import { InfoItem } from './components/InfoItem';
 import { Button } from './components/Button';
 import { GridItem } from './components/GridItem';
@@ -14,13 +16,12 @@ import { FormatTimeGame } from './helpers/FormatTimeGame';
 
 const App = () => {
   const [playing, setPlaying] = useState<boolean>(false);
+  const [startGame, setStartGame] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);  
   const [move, setMove] = useState<number>(0);
   const [countShown, setCountShown] = useState<number>(0);    
-  const [gridItem, setGridItem] = useState<GridItemTypes[]>([]);
-
-  useEffect(()=> resetAndCreateGrid(), []);
+  const [gridItem, setGridItem] = useState<GridItemTypes[]>([]);  
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,7 +65,7 @@ const App = () => {
   useEffect(() => {
     let opened = gridItem.filter(item => item.permanentShown);
     if(move > 0 && opened.length === gridItem.length) {
-      setPlaying(false);
+      setPlaying(false);      
       setEndGame(true);
     }
   }, [gridItem, move]);
@@ -74,7 +75,7 @@ const App = () => {
     setTime(0);
     setMove(0); 
     setCountShown(0); 
-    setEndGame(false);   
+    setEndGame(false);       
 
     // 2 - create gridItem emply
     let gridClone: GridItemTypes[] = [];
@@ -98,6 +99,20 @@ const App = () => {
 
     // 3 - start game
     setPlaying(true);
+  }
+
+  const startGameFunction = () => {
+    resetAndCreateGrid();
+    setStartGame(true);
+  }
+
+  const initialStateGame = () => {
+    setTime(0);
+    setMove(0); 
+    setCountShown(0);
+    setGridItem([]);
+    setStartGame(false);
+    setEndGame(false);
   }
 
   const handleClickItem = (index: number) => {
@@ -125,7 +140,7 @@ const App = () => {
               <InfoItem content="Tempo" value={FormatTimeGame(time)} />
               <InfoItem content="Movimentos" value={`${move}`} />
             </C.GameInfo>
-            <Button content="Reiniciar" icon={RestartImg} onClick={resetAndCreateGrid} />
+            <Button content={!startGame ? 'Iniciar' : 'Reiniciar'} icon={!startGame ? PlayImg : RestartImg} onClick={startGameFunction} />
           </C.Left>
 
           <C.Right>
@@ -145,9 +160,10 @@ const App = () => {
               <InfoItem content="Movimentos" value={`${move}`} />
           </C.EndGameInfo>
           <C.EndGameImg src={WinImg} />
-          <Button content="Reiniciar" icon={RestartImg} onClick={resetAndCreateGrid} />
+          <Button content="Início" icon={HomeImg} onClick={initialStateGame} />
         </C.EndGame>
-      }      
+      }     
+      <C.Footer>© Copyright - <C.FooterLink href="https://github.com/ladsonmario" target="_blank">Ladson</C.FooterLink></C.Footer>
     </C.Container>
   );
 }
