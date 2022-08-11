@@ -5,10 +5,10 @@ export const Container = styled.div`
     max-width: 750px;    
     margin: auto;
     display: flex;
-    margin-top: 40px;    
+    margin-top: 40px;       
 
     @media (max-width: 750px) {
-        flex-direction: column;
+        flex-direction: column;        
     }
 `;
 

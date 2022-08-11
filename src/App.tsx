@@ -162,8 +162,7 @@ const App = () => {
           <C.EndGameImg src={WinImg} />
           <Button content="Início" icon={HomeImg} onClick={initialStateGame} />
         </C.EndGame>
-      }     
-      <C.Footer>© Copyright - <C.FooterLink href="https://github.com/ladsonmario" target="_blank">Ladson</C.FooterLink></C.Footer>
+      }           
     </C.Container>
   );
 }
